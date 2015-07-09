@@ -10,10 +10,10 @@
 # Uncomment below to program ATMEGA328p with USBasp
 
 ### BEGIN atmega328p on breadboard
-# ISP_PROG		= usbasp
-# BOARDS_TXT	= atmega328bb_boards.txt
-# BOARD_TAG		= atmega328bb
-# VARIANT		= standard	
+# ISP_PROG        = usbasp
+# BOARDS_TXT      = atmega328bb_boards.txt
+# BOARD_TAG       = atmega328bb
+# VARIANT         = standard    
 ### END atmega328p on breadboard
 
 include $(ARDUINO_MK)
