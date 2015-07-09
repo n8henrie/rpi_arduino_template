@@ -1,0 +1,6 @@
+# Local udev rules
+# `udevadm info --query=all --attribute-walk --name=/dev/ttyACM0`
+# Set permissions for USBasp and link to /dev/usbasp
+SUBSYSTEM=="usb", ATTRS{product}=="USBasp", GROUP="dialout", MODE="0660", SYMLINK+="usbasp"
+# Set permissions for Arduino and link to /dev/arduino_serial
+SUBSYSTEM=="tty", ATTRS{manufacturer}=="Arduino*", SYMLINK+="arduino_serial", GROUP="dialout", MODE="0660"
