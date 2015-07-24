@@ -1,0 +1,6 @@
+[submodule "packages/attiny"]
+	path = packages/attiny
+	url = https://github.com/damellis/attiny.git
+[submodule "packages/atmega"]
+	path = packages/atmega
+	url = https://github.com/carlosefr/atmega.git

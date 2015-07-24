@@ -25,7 +25,16 @@ While this is available in the Raspbian repo, I *strongly* recommend you install
 - `cu` for a simple serial connection. `sudo aptitude install cu`
 
 ## Setup
+
+### Git Submodules
+
+I've added a few boards.txt files that seem to work (found at the [Unofficial list of 3rd party boards support urls](https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls) from the Arduino GitHub site) as [git submodules](http://git-scm.com/docs/git-submodule). After cloning this repo, you may need to `git submodule update --init --recursive` and `git submodule foreach git pull origin master` to get them all pulled in and up to date.
+
+### Env Variables
+
 Export the `ARDUINO_MK` env variable as the path to `Arduino.mk`. If you installed via GitHub to `/opt/arduino-mk` like I did, you could run `export ARDUINO_MK=/opt/arduino-mk/Arduino.mk`. Once this seems to be working, add that to your `~/.bash_profile` or `~/.bashrc`, depending on your setup. Make sure it's properly set with `env | grep ARDUINO_MK`. On OSX you'll also need to export `ARDUINO_DIR` as noted in `Makefile`.
+
+### USB Permissions
 
 Whenever you plug the Arduino or USBasp into your (powered) USB hub, it will get assigned to something like `/dev/ttyACM0` or `/dev/ttyUSB1`. There are a number of ways to figure out which one -- I recommend `ls -lAtr /dev/tty{A,U}*`, look at the timestamps, plug and unplug the USB a few times, and you should be able to figure it out. While not strictly necessary, I recommend setting up a udev rule to automatically set appropriate permissions and to symlink the device to something static (e.g. `/dev/arduino_serial`), which will make it much easier to write your scripts. You can see my udev rules in `10-local.rules`. You may choose to edit these to suit your situation and `sudo cp -i 10-local.rules /etc/udev/rules.d/` once you're satisfied.
 
@@ -58,3 +67,19 @@ Because I'm most familiar with Python, I also included `serial_example.py`. Open
 - Check serial port speed: `stty < /dev/arduino_serial`.
     - I've put everything as 115200 because that's what my Pi seems to have defaulted to, though 9600 seems more popular.
     - If yours is different, you'll need to either change the port's rate to 115200 with `stty` or change the scripts to whatever rate you prefer.
+- Cannot set SCK period errors using chips with USBasp
+    - If you're using a brand new chip, you may need to set the fuses -- `make set_fuses` seems to work fairly well.
+    - If you're running a device very slow (e.g. ATtiny85 at internal clock's 1MHz), you may need to either:
+        - Set avrdude's `-B` flag to something like `-B4` (may not be possible depending on your USBasp firmware)
+        - Bridge jumper 3 on your USBasp
+
+## Changelog
+
+### 20150724
+
+- Moved sketches to examples
+- Added [git submodules](http://git-scm.com/docs/git-submodule) for appropriate boards.txt files
+
+### 20150709
+
+- Initial commit
