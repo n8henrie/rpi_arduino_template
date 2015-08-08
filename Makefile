@@ -12,23 +12,25 @@
 # order to slow things down enough to `make set_fuses`
 
 ### BEGIN atmega328p on breadboard
-ISP_PROG        = usbasp
-BOARDS_TXT      = packages/atmega/avr/boards.txt
-BOARD_TAG       = atmega328p
-VARIANT         = standard    
-F_CPU           = 8000000L
+#ISP_PROG        = usbasp
+#BOARDS_TXT      = packages/atmega/avr/boards.txt
+#BOARD_TAG       = atmega328p
+#VARIANT         = standard    
+#F_CPU           = 8000000L
+#
 ## Only uncomment if needed
-# AVRDUDE_OPTS = -B4
+#AVRDUDE_OPTS = -B4
 ### END atmega328p on breadboard
 
 ### BEGIN attiny85 on breadboard
-# ISP_PROG = usbasp
-# ALTERNATE_CORE_PATH = packages/attiny/attiny
-# BOARD_TAG       = attiny85
-# Needs either USBasp jumper 3 or `-B4` flag (with appropriate firmware) for
-# 1000000L
-# F_CPU = 1000000L
-# AVRDUDE_OPTS = -B4
+#ISP_PROG = usbasp
+#ALTERNATE_CORE_PATH = packages/attiny/attiny
+#BOARD_TAG       = attiny85
+##
+## Needs either USBasp jumper 3 or `-B4` flag (with appropriate firmware) 
+## for 1000000L
+#F_CPU = 1000000L
+#AVRDUDE_OPTS = -B4
 ### END ATtiny85 on breadboard
 
 include $(ARDUINO_MK)
