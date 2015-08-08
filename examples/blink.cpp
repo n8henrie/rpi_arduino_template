@@ -6,8 +6,8 @@
  */                                                                               
 
 #include <Arduino.h>
-#define LED_PIN 8
-#define WAIT_SECS 0.25
+#define LED_PIN 3
+#define WAIT_SECS 1
 
 bool blinkToggle = true;
 
