@@ -11,6 +11,9 @@
 # May need to uncomment `AVRDUDE_OPTS = -B4` or connect the USBasp Jumper 3 in
 # order to slow things down enough to `make set_fuses`
 
+# List any libs you #include:
+# ARDUINO_LIBS = SoftwareSerial espduino
+
 ### BEGIN atmega328p on breadboard
 #ISP_PROG        = usbasp
 #BOARDS_TXT      = packages/atmega/avr/boards.txt
